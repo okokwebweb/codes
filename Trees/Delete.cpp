@@ -58,13 +58,39 @@ Node* deleteFromBST(Node* root,int val)
         }
 
         //2 child
+
+        //babbar hug diya bhenchod!
+        //striver ki jai!!
+
+        //niche waala use nahi karenge
+
+        // if(root->left!=NULL && root->right!=NULL)
+        // {
+        //     int mini=minimum(root->right);
+        //     root->data=mini;
+        //     root->right= deleteFromBST(root->right,mini);
+        //     return root;
+        // }
+
+        //yaha tak ka not used
+
+        //YE WAAL HE USE KARENGE
+        //ISME NO MINI AUR MAXI SIDHA RIGHT SUBTREE KO LEFT SUBTREE KE RIGHT MOST NODE PE LAGA DENGE AUR RETURN KAR DENGE ROOT->LEFT KO BHENCHOD!
         if(root->left!=NULL && root->right!=NULL)
-        {
-            int mini=minimum(root->right);
-            root->data=mini;
-            root->right= deleteFromBST(root->right,mini);
-            return root;
-        }
+            {
+                
+                Node* temp=root->right;
+                Node* actual = root->left;
+                while(actual->right!=NULL)
+                actual=actual->right;
+
+                actual->right=temp;
+
+                actual=root->left;
+                
+                delete root;
+                return actual;
+            }
     }
     else if(root->data>val)
     {
